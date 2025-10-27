@@ -1,9 +1,6 @@
 "use strict";
 
 const form = document.querySelector(".cont-form");
-form.onsubmit = (e) => {
-  e.preventDefault();
-};
 
 const REG_FORM = {
   "user-name": /^[A-Z][a-z]*$/,
@@ -17,19 +14,48 @@ const REG_FORM = {
 
 const inputForms = document.querySelectorAll("input, textarea");
 
-inputForms.forEach((i) => i.addEventListener("input", inputHandler));
-
 function inputHandler(e) {
-  if (e.target.tagName.toLowerCase() === "textarea") {
-    let value = e.target.value;
+  const target = e.target;
+  let value = target.value;
+
+  if (target.tagName.toLowerCase() === "textarea") {
     value = value.replace(/\s{2,}/g, " ");
-    e.target.value = value;
+    target.value = value;
   }
-  if (REG_FORM[e.target.name].test(e.target.value)) {
-    e.target.classList.add("valid");
-    e.target.classList.remove("invalid");
+
+  if (REG_FORM[target.name].test(value)) {
+    target.classList.add("valid");
+    target.classList.remove("invalid");
   } else {
-    e.target.classList.remove("valid");
-    e.target.classList.add("invalid");
+    target.classList.remove("valid");
+    target.classList.add("invalid");
   }
 }
+
+inputForms.forEach((i) => i.addEventListener("input", inputHandler));
+
+form.onsubmit = (e) => {
+  e.preventDefault();
+
+  if (!form.checkValidity()) {
+    console.error("❌ Форма містить невалідні дані. Неможливо відправити.");
+    return;
+  }
+
+  let messageValue = form.elements["form-textarea"].value;
+  messageValue = messageValue.trim();
+  messageValue = messageValue.replace(/\s{2,}/g, " ");
+
+  const formDataObject = {
+    name: form.elements["user-name"].value.trim(),
+    surname: form.elements["user-surname"].value.trim(),
+    email: form.elements["user-email"].value.trim(),
+    phone:
+      form.elements["user-phone1"].value +
+      form.elements["user-phone2"].value +
+      form.elements["user-phone3"].value,
+    subject: form.elements["user-msg"].value,
+    message: messageValue,
+  };
+  console.log(formDataObject);
+};
