@@ -15,11 +15,16 @@ const REG_FORM = {
   "form-textarea": /^.{1,500}$/,
 };
 
-const inputForms = document.querySelectorAll("input");
+const inputForms = document.querySelectorAll("input, textarea");
 
 inputForms.forEach((i) => i.addEventListener("input", inputHandler));
 
 function inputHandler(e) {
+  if (e.target.tagName.toLowerCase() === "textarea") {
+    let value = e.target.value;
+    value = value.replace(/\s{2,}/g, " ");
+    e.target.value = value;
+  }
   if (REG_FORM[e.target.name].test(e.target.value)) {
     e.target.classList.add("valid");
     e.target.classList.remove("invalid");
@@ -28,6 +33,3 @@ function inputHandler(e) {
     e.target.classList.add("invalid");
   }
 }
-const textArea = document.querySelector("textarea");
-const textAreaClass = textArea.classList.add("form-textarea");
-const resInputForm = textAreaClass.replace(/\s{2,}/g, " ");
