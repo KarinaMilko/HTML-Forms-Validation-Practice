@@ -17,30 +17,32 @@
       <form class="cont-form">
         <label class="form-lable">
           <span class="label-caption">Your name</span>
-          <input
-            class="form-input"
-            type="text"
-            name="user-name"
-            placeholder="first name"
-            required
-            autofocus
-            tabindex="1"
-            minlength="2"
-            maxlength="32"
-            pattern="[A-Z][a-z]*"
-          />
+          <div class="input-group-name">
+            <input
+              class="form-input"
+              type="text"
+              name="user-name"
+              placeholder="first name"
+              required
+              autofocus
+              tabindex="1"
+              minlength="2"
+              maxlength="32"
+              pattern="[A-Z][a-z]*"
+            />
 
-          <input
-            class="form-input"
-            type="text"
-            name="user-surname"
-            placeholder="last name"
-            required
-            tabindex="2"
-            minlength="2"
-            maxlength="65"
-            pattern="[A-Z][a-z]{1,31}(-[A-Z][a-z]{1,31})?"
-          />
+            <input
+              class="form-input"
+              type="text"
+              name="user-surname"
+              placeholder="last name"
+              required
+              tabindex="2"
+              minlength="2"
+              maxlength="65"
+              pattern="[A-Z][a-z]{1,31}(-[A-Z][a-z]{1,31})?"
+            />
+          </div>
         </label>
         <label class="form-lable">
           <span class="label-caption">Your email</span>
@@ -55,32 +57,34 @@
         </label>
         <label class="form-lable">
           <span class="label-caption">Phone *</span>
-          <input
-            class="form-input"
-            type="tel"
-            name="user-phone1"
-            placeholder="+38000"
-            tabindex="4"
-            pattern="\+380\d{2}"
-          />
+          <div class="phone-group">
+            <input
+              class="form-input"
+              type="tel"
+              name="user-phone1"
+              placeholder="+38000"
+              tabindex="4"
+              pattern="\+380\d{2}"
+            />
 
-          <input
-            class="form-input"
-            type="tel"
-            name="user-phone2"
-            placeholder="000"
-            tabindex="5"
-            pattern="\d{3}"
-          />
+            <input
+              class="form-input"
+              type="tel"
+              name="user-phone2"
+              placeholder="000"
+              tabindex="5"
+              pattern="\d{3}"
+            />
 
-          <input
-            class="form-input"
-            type="tel"
-            name="user-phone3"
-            placeholder="0000"
-            tabindex="6"
-            pattern="\d{4}"
-          />
+            <input
+              class="form-input"
+              type="tel"
+              name="user-phone3"
+              placeholder="0000"
+              tabindex="6"
+              pattern="\d{4}"
+            />
+          </div>
         </label>
         <label class="form-lable">
           <span class="label-caption">Message subject *</span>

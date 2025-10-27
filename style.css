@@ -43,16 +43,36 @@ main {
   display: flex;
   align-self: stretch;
   gap: 10px;
-  flex-wrap: wrap;
 }
+
 .label-caption {
-  flex: 1 1 120px;
+  flex: 0 0 150px;
   align-self: center;
 }
 
 .form-input {
-  flex: 300 1 240px;
+  flex: 1 1 auto;
   padding: 10px;
+}
+
+.input-group-name {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.phone-group {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.phone-group input {
+  flex: 0 0 auto;
+  width: calc((100% - 20px) / 3);
+  min-width: 60px;
 }
 
 .submit-btm {
@@ -71,11 +91,3 @@ main {
   border: 1px solid red;
   background-color: lightpink;
 }
-/* .valid {
-  border: 1px solid green;
-  background-color: aquamarine;
-}
-.invalid {
-  border: 1px solid red;
-  background-color: lightpink;
-} */
